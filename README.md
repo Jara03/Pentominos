@@ -1,2 +1,2 @@
 # Pentominos
-Jeu type tetris pour le module de programmation avancée. 
+Jeu type tetris en C pour le module de programmation avancée. 

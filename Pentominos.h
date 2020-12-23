@@ -6,8 +6,5 @@
 #define PENTOMINOS_PENTOMINOS_H
 
 
-
-void launch();
-
-void init();
+void testAffichagePiece(SDL_Renderer *r);
 #endif //PENTOMINOS_PENTOMINOS_H

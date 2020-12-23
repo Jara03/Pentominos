@@ -4,17 +4,17 @@
 
 #ifndef PENTOMINOS_PIECE_H
 #define PENTOMINOS_PIECE_H
-
-
+#include "SDL2/SDL.h"
+//une piece est tout simplement un rectangle avec un texture.
+//Les Rectangles de SDL possèdent deja des Positions
 typedef struct pieces {
-    //la forme est une chaine de caractère en deux dimensions
-    char** forme;
-    //texture venant de la bibliothèque SDL
-    SDLTexture texture;
+    SDL_Rect *rectangle;
+    SDL_Texture *texture;
 
 } piece;
 
-void symetrie(piece* p);
-void rotation(piece* p);
-
+piece createPiece(int x,int y, SDL_Texture *t);
+void deplacer(piece *p);
+void collision(piece p1, piece p2);
+void afficherPiece(piece p, SDL_Renderer *r);
 #endif //PENTOMINOS_PIECE_H

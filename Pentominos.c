@@ -2,21 +2,39 @@
 #include <stdlib.h>
 #include "SDL2/SDL.h"
 #include "Modele/Piece.h"
-
+#include <stdbool.h>
+#include "Modele/FamillePiece.h"
 
 /*fonction qui lance le jeu : elle initialise les vues */
 
 
 void testAffichagePiece(SDL_Renderer *r){
-    SDL_Texture *text = SDL_CreateTexture(r,SDL_PIXELFORMAT_RGBA8888,SDL_TEXTUREACCESS_STATIC,10,10);
-    piece p = createPiece(0,0,text);
 
-    SDL_SetRenderTarget(r,text);
+    //la piece est créee
+    //création de piece OPE
+    piece *p = createPiece(20, 20, 1, r);
+    //deplacement de piece OPE
+    deplacer(p,150,150);
+    //Affichage de piece OPE
+
+    afficherPiece(p,r);
+
+
+    //On veux afficher une famille piece maintenant
+
+    FamillePiece *fp = createFamillePiece('x',r);
+    FamillePiece *fp1 = createFamillePiece('l',r);
+    deplacerFamillePiece(100,100,fp);
+    deplacerFamillePiece(-50,0,fp);
+    afficherFamillePiece(fp,r);
+    afficherFamillePiece(fp1,r);
+
 }
 
 
 int main(int argc, char* argv[]){
     //on initialise le pointeur de fenetre
+    bool run = true;
     SDL_Window *window = NULL;
     SDL_Renderer *renderer = NULL;
     SDL_Color brun = {100,50,40,255};
@@ -27,7 +45,7 @@ int main(int argc, char* argv[]){
         return EXIT_FAILURE;
     }
     //apres initialisation on assigne une fenetre au pointeur
-    window = SDL_CreateWindow("Pentominos", SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,800,600,  0);
+    window = SDL_CreateWindow("Pentominos", SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,800,600,  SDL_WINDOW_OPENGL);
     //gestion d'erreur sur la fenetre
     if(window == NULL){
         fprintf(stderr,"fenetre non créee : %s", SDL_GetError());
@@ -35,11 +53,22 @@ int main(int argc, char* argv[]){
     }
     renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
 
-    SDL_SetRenderDrawColor(renderer,brun.r,brun.g,brun.b,brun.a);
-    SDL_RenderClear(renderer);
-    SDL_RenderPresent(renderer);
-    SDL_Delay(3000);
-    SDL_DestroyWindow(window);
+
+    SDL_Event ev;
+    while(run){
+        SDL_WaitEvent(&ev);
+        if(ev.type == SDL_QUIT){
+            run = SDL_FALSE ;
+        }
+        //effectuer les action de jeu ici
+        SDL_SetRenderDrawColor(renderer,brun.r,brun.g,brun.b,brun.a);
+        SDL_RenderClear(renderer);
+        testAffichagePiece(renderer);
+        SDL_Delay(20);
+    }
+        SDL_DestroyWindow(window);
+
+
     SDL_Quit();
     return EXIT_SUCCESS;
 }

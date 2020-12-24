@@ -7,16 +7,16 @@
 
 #include "Piece.h"
 #include "SDL2/SDL.h"
+#include "FamillePiece.h"
 
 typedef struct map{
-    piece* tabPiece ;
-    char** grille;
-    //SDL_Texture texture;
+    FamillePiece *piecesPosee[12];
+    SDL_Texture *deco;
 } map;
 #endif //PENTOMINOS_MAP_H
 
 /*fonction permettant de créer une map*/
-map createMap();
+map* createMap();
     //on initialise la structure
     //on créer une liste de piece avec une fonction annexe
     //on assigne la texture a la SDL

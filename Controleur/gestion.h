@@ -8,12 +8,13 @@
 
 #include "../Modele/Map.h"
 #include "../Modele/Piece.h"
+#include "../Modele/FamillePiece.h"
 
 typedef struct gestionnaire{
-    piece* sacDePiece ;
+    FamillePiece* sacDePiece[12] ;
     map* grilleDeJeu;
 } gestionnaire;
-
+void initPiecesSac(SDL_Renderer *r);
 int piecePosable();
 void poserPiece();
 void ajouterPieceMap();

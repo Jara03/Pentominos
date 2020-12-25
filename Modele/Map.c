@@ -6,13 +6,11 @@
 #include "SDL2/SDL.h"
 #include "FamillePiece.h"
 
-map* createMap(){
-    //revoir le fonctionnement de malloc avec les tableaux
-    FamillePiece *fp = (FamillePiece*) malloc(12 * sizeof(FamillePiece));
+void mapInit(map* m, SDL_Renderer *r){
+    //on malloc
+    m = (map*) malloc(sizeof(map));
     //on utilisera une image pour la déco
+    //TODO creer une texture BMP pour Map
      SDL_Texture* d = NULL;
 
-     map *m;
-     m->piecesPosee[0] = fp;
-     m->deco = d;
 }

@@ -23,6 +23,7 @@ map* createMap();
 
 
 /*fonction indiquant a la vue comment afficher (dans quel ordre etc) les différents éléments de la map*/
+void mapInit(map* m,SDL_Renderer *r);
 void afficherMap();
     //on affiche la map
     //on affiche les pièces par dessus a leur positions réspectives

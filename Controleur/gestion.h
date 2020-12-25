@@ -14,10 +14,12 @@ typedef struct gestionnaire{
     FamillePiece* sacDePiece[12] ;
     map* grilleDeJeu;
 } gestionnaire;
-void initPiecesSac(SDL_Renderer *r);
+
+gestionnaire* initGestionnaire(SDL_Renderer *r);
 int piecePosable();
 void poserPiece();
 void ajouterPieceMap();
 void retirerPieceGestion();
+void modeDeplacement();
 
 #endif //PENTOMINOS_GESTION_H

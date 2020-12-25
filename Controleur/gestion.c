@@ -4,49 +4,46 @@
 
 #include "gestion.h"
 #include "../Modele/FamillePiece.h"
+#include "../Modele/Map.h"
 #include "SDL2/SDL.h"
 
+void modeDeplacement(){
+//le mode déplacement survient lorsque l'on a séléctionné une piece dans le sac de piece (ce qui est a vérfiier)
+//il permet a l'utilisateur de bouger la piece dans la map (ou d'effectuer une rotation ou symétrie) jusqu'a ce qu'il
+//trouve une place adéquate pour sa piece. si la piece est dite posable, le bouton poser devient clickable et il est donc
+//possible de changer la piece de structure, c'est a dire de la faire passer du sac de piece a la structure map.
+//lorsqu'une piece est posée ou annulée, on sort du mode déplacement
+}
 int piecePosable(){
-
+//on dit qu'une piece est posable si elle n'est pas en collision avec une autre piece
+//c'est a dire qu'elle ne possède pas la meme position qu'une autre piece
+//pour verifier qu'une famille piece est posable, il faut verifier chacune des pieces et changer le
+//bool si une seule des pieces est dite "imposable" mdr
 }
 
 void poserPiece(){
-
+//fait changer la piece de structure (sac de piece a map)
 }
 
 void ajouterPieceMap(){
-
+//fonction pour poserPiece
 }
 
 void retirerPieceGestion(){
-
+//fonction pour poserPiece
 }
-void createSacDePieceLectureFichier(FILE *f,SDL_Renderer *r){
-    int x = 0, y = 0, i = 0, j = 0;
-    gestionnaire *g = (struct gestionnaire*) malloc(sizeof(struct gestionnaire));
-   // FamillePiece *fp = (FamillePiece*) malloc(sizeof(FamillePiece));
-    //verifier ce qui ne va pas avec fopen
-    char* ligne;
-    size_t longueur;
-    ssize_t res = 0;
-    while((res = getline(&ligne,&longueur,f)) != -1) {
-        if(res == 0){
-            i++;
-        }else{
-            for(x = 0; x<res; x++ ){
-                g->sacDePiece[i]->membre[j] = createPiece(x,y,i,r);
-            }
-        }
-        y++;
-    }
 
-}
-void initPiecesSac(SDL_Renderer *r){
+
+
+
+gestionnaire* initGestionnaire(SDL_Renderer *r){
     //on ajoute les 12 pieces dans le sac de gestion
-    gestionnaire g;
+    gestionnaire *g = (struct gestionnaire*)malloc(sizeof(struct gestionnaire));
+    createFamillePiece(g->sacDePiece,r);
+     mapInit(g->grilleDeJeu,r);
+    //TODO déplacer les pieces sur un carré divisé en 12 a coté de la Map
 
-    g.sacDePiece[0] = createFamillePiece('x',r);
-
+    return g;
 }
 
 

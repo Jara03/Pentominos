@@ -7,14 +7,19 @@
 #include "Vue/VueHead.h"
 #include "Modele/FamillePiece.h"
 
-/*fonction qui lance le jeu : elle initialise les vues */
-
+/*nettoyage de la fenetre au bouton de sortie*/
+void nettoyage(){
+    SDL_DestroyWindow(window);
+    SDL_DestroyRenderer(renderer);
+    //sors de la SDL
+    SDL_Quit();
+}
 
 int main(int argc, char* argv[]){
     //on initialise le pointeur de fenetre
     bool run = true;
-    SDL_Window *window = NULL;
-    SDL_Renderer *renderer = NULL;
+    window = NULL;
+    renderer = NULL;
     SDL_Color brun = {100,50,40,255};
 
 
@@ -31,22 +36,16 @@ int main(int argc, char* argv[]){
     //on creer un gestionnaire qui initialise son paquet de piece et affiche l'univers du jeu
     gestionnaire *gest = initGestionnaire(renderer);
 
+    atexit(nettoyage);
 
-    SDL_Event ev;
    while(run){
-        SDL_WaitEvent(&ev);
-        if(ev.type == SDL_QUIT){
-            run = SDL_FALSE ;
-        }
-       SDL_SetRenderDrawColor(renderer,brun.r,brun.g,brun.b,brun.a);
-       SDL_RenderClear(renderer);
+        //prerender
+       afficherHeadGame(renderer);
+        //afficherSacDePiece(gest,renderer);
+        //créer une fonction de gestion de rendu dite "flemmarde"
        SDL_RenderPresent(renderer);
-
+        SDL_Delay(16); //ms pour avoir du 60 fps
       }
-        SDL_DestroyWindow(window);
-
-
-    SDL_Quit();
-    return EXIT_SUCCESS;
+    return 0;
 }
 

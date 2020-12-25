@@ -34,7 +34,14 @@ void retirerPieceGestion(){
 }
 
 
+void afficherSacDePiece(gestionnaire *g, SDL_Renderer *r){
+    for(int i = 0; i<12;i++){
+        if(g->sacDePiece[i] != NULL){
+            afficherFamillePiece(g->sacDePiece[0],r);
+        }
+    }
 
+}
 
 gestionnaire* initGestionnaire(SDL_Renderer *r){
     //on ajoute les 12 pieces dans le sac de gestion
@@ -42,9 +49,19 @@ gestionnaire* initGestionnaire(SDL_Renderer *r){
     createFamillePiece(g->sacDePiece,r);
      mapInit(g->grilleDeJeu,r);
     //TODO déplacer les pieces sur un carré divisé en 12 a coté de la Map
-
+    int localInitialeX = 515;
+    int localInitialeY = 155;
+    int i = 0;
+        for(int y=0;y<4;y++){
+            for(int x=0;x<3;x++){
+                deplacerFamillePiece(localInitialeX + (50*x),localInitialeY + (50*y),g->sacDePiece[i]);
+                i++;
+            }
+        }
     return g;
 }
+
+
 
 
 

@@ -10,12 +10,16 @@
 #include "../Modele/Piece.h"
 #include "../Modele/FamillePiece.h"
 
+extern SDL_Window *window;
+extern SDL_Renderer *renderer;
+
 typedef struct gestionnaire{
     FamillePiece* sacDePiece[12] ;
     map* grilleDeJeu;
 } gestionnaire;
 
 gestionnaire* initGestionnaire(SDL_Renderer *r);
+void afficherSacDePiece(gestionnaire* g, SDL_Renderer *r);
 int piecePosable();
 void poserPiece();
 void ajouterPieceMap();

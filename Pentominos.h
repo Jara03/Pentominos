@@ -4,7 +4,8 @@
 
 #ifndef PENTOMINOS_PENTOMINOS_H
 #define PENTOMINOS_PENTOMINOS_H
-
-
+#include "SDL2/SDL.h"
+SDL_Window *window;
+SDL_Renderer *renderer;
 void testAffichagePiece(SDL_Renderer *r);
 #endif //PENTOMINOS_PENTOMINOS_H

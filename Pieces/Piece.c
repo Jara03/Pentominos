@@ -4,7 +4,7 @@
 
 #include "Piece.h"
 #include "SDL2/SDL.h"
-#include "../Vue/VueDePiece.h"
+#include "../Vues/Vue.h"
 
 /*le char donne le symbole de la forme de la piece a creer*/
 piece* createPiece(int x, int y, int codeCouleur, SDL_Renderer *rend){

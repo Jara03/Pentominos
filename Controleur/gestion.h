@@ -6,19 +6,33 @@
 #define PENTOMINOS_GESTION_H
 
 
-#include "../Modele/Map.h"
-#include "../Modele/Piece.h"
-#include "../Modele/FamillePiece.h"
+#include "../Map.h"
+#include "../Pieces/Piece.h"
+#include "../Pieces/FamillePiece.h"
 
-extern SDL_Window *window;
-extern SDL_Renderer *renderer;
 
 typedef struct gestionnaire{
     FamillePiece* sacDePiece[12] ;
     map* grilleDeJeu;
 } gestionnaire;
 
-gestionnaire* initGestionnaire(SDL_Renderer *r);
+
+typedef enum{
+    NONE,
+    ROTATE,
+    SYM,
+    POSER,
+    DEPLACER
+
+}Pentomino_Action;
+
+void updatePentomino();
+void afficherElementsJeu();
+void updateRenderer();
+void afficherHeader();
+void init_all();
+void nettoyage();
+gestionnaire* initGestionnaire();
 void afficherSacDePiece(gestionnaire* g, SDL_Renderer *r);
 int piecePosable();
 void poserPiece();

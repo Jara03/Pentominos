@@ -47,9 +47,9 @@ int Zy[] = {0,0,10,0,10};
 
 void afficherFamillePiece(FamillePiece *fp, SDL_Renderer *r){
     for(int i= 0; i<5; i++){
-        afficherPiece(fp->membre[i],r);
+        afficherPiece(fp->membre[i],r);  //on ajoute un texture unique qu'on ne modifie que si la famille piece
+        //a été changée, on vérifie ca grace a un booleen global
     }
-    SDL_RenderPresent(r);
 }
 /*On deplace et on met a jour*/
 

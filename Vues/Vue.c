@@ -5,7 +5,7 @@
  * on a ici pour l'instant des pieces 1.rouges, 2.bleues, 3.jaunes, 4.vertes, 5.orange, 6.cyan, 7.mauve,
  * 8.blanches, 9.noires, 10.vertes claires, 11.roses et 12.brunes
  * Ce qui constitue 12 pieces au total*/
-#include "VueDePiece.h"
+#include "Vue.h"
 #include "SDL2/SDL.h"
 int rouge[] = {255,0,0,255};
 int bleu[] = {0,0,255,255};
@@ -74,4 +74,17 @@ SDL_Surface *sur = SDL_CreateRGBSurface(0,10,10,32,0,0,0,0);
      t = SDL_CreateTextureFromSurface(r,sur);
      SDL_FreeSurface(sur);
      return t;
+}
+
+SDL_Texture* creerTextureHeadGame(SDL_Renderer *r){
+    SDL_Surface* s = SDL_LoadBMP("/home/rania/CLionProjects/Pentominos/arrierePlan.bmp");
+    SDL_Texture* t = (SDL_Texture*) malloc(sizeof(SDL_Texture*));
+    t = SDL_CreateTextureFromSurface(r,s);
+    SDL_FreeSurface(s);
+    return t;
+}
+void afficherHeadGame(SDL_Renderer *r){
+    //on met le renderer a jour
+    SDL_Texture* t = creerTextureHeadGame(r);
+    SDL_RenderCopy(r,t,NULL,NULL);
 }

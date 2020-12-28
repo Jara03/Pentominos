@@ -5,13 +5,14 @@
 #ifndef PENTOMINOS_MAP_H
 #define PENTOMINOS_MAP_H
 
-#include "Piece.h"
+#include "Pieces/Piece.h"
 #include "SDL2/SDL.h"
-#include "FamillePiece.h"
+#include "Pieces/FamillePiece.h"
 
 typedef struct map{
     FamillePiece *piecesPosee[12];
     SDL_Texture *deco;
+    SDL_Rect * rcMap;
 } map;
 #endif //PENTOMINOS_MAP_H
 
@@ -23,6 +24,7 @@ map* createMap();
 
 
 /*fonction indiquant a la vue comment afficher (dans quel ordre etc) les différents éléments de la map*/
+SDL_Texture* donneTextureMap(SDL_Renderer *r);
 void mapInit(map* m,SDL_Renderer *r);
 void afficherMap();
     //on affiche la map

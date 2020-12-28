@@ -8,5 +8,7 @@
 #define PENTOMINOS_VUEDEPIECE_H
 
 SDL_Texture* donneTexturePieceColoree(int CodeCouleur, SDL_Renderer *r );
+SDL_Texture* creerTextureHeadGame(SDL_Renderer *r);
+void afficherHeadGame(SDL_Renderer *r);
 
 #endif //PENTOMINOS_VUEDEPIECE_H

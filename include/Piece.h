@@ -13,8 +13,8 @@ typedef struct pieces {
 
 } piece;
 
-piece* createPiece(int x, int y, int codeCouleur, SDL_Renderer *rend);
+piece* createPiece(int x, int y,SDL_Texture *text, SDL_Renderer *rend);
 void deplacer(piece *p, int x, int y);
-void collision(piece p1, piece p2);
+int collision(piece *p1, piece *p2);
 void afficherPiece(piece *p, SDL_Renderer *r);
 #endif //PENTOMINOS_PIECE_H
